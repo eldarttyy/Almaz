@@ -23,7 +23,7 @@ function setMeta(name, content) {
 // it keeps those out of search results.
 export default function useSeo(title, description = DEFAULT_DESCRIPTION, { noIndex = false } = {}) {
   useEffect(() => {
-    const fullTitle = title ? `${title} | АЛМАЗ` : 'Алмазная резка бетона и бурение в Бишкеке | АЛМАЗ'
+    const fullTitle = title ? `${title} | РезМастер` : 'Алмазная резка бетона и бурение в Бишкеке | РезМастер'
     document.title = fullTitle
     setMeta('description', description)
     setMeta('og:title', fullTitle)

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://diamondcut.kg/sitemap.xml
+Sitemap: https://rezmaster.kg/sitemap.xml

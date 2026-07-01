@@ -5,10 +5,10 @@ import drilling3Image from '../assets/drilling3.webp'
 import drilling4Image from '../assets/drilling4.webp'
 
 // Short, real brand for the logo/footer. Keyword phrases live in page <h1>s and meta.
-export const BRAND = 'АЛМАЗ'
+export const BRAND = 'РезМастер'
 export const TAGLINE = 'Алмазная резка и бурение бетона · Бишкек'
 export const COMPANY_NAME = 'Алмазная резка бетона Бишкек'
-export const SITE_URL = 'https://diamondcut.kg'
+export const SITE_URL = 'https://rezmaster.kg'
 
 export const contactInfo = {
   city: 'Бишкек',
@@ -20,8 +20,8 @@ export const contactInfo = {
   whatsappLink: 'https://wa.me/996503621212',
   email: 'eldarttyy@proton.me',
   emailLink: 'mailto:eldarttyy@proton.me',
-  instagram: 'https://instagram.com/diamondcut.kg',
-  facebook: 'https://facebook.com/diamondcut.kg',
+  instagram: 'https://instagram.com/rezmaster.kg',
+  facebook: 'https://facebook.com/rezmaster.kg',
 }
 
 export const services = [
