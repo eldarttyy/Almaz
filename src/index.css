@@ -1,0 +1,755 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap');
+
+:root {
+  --bg: #111316;
+  --bg-secondary: #1a1d22;
+  --card: #171a1f;
+  --text: #f3f5f7;
+  --muted: #b8c0c9;
+  --accent: #b1171f;
+  --accent-strong: #da1f2a;
+  --line: #2b3037;
+  --radius: 14px;
+  --container: 1200px;
+  /* Fluid horizontal gutter — grows with the viewport instead of a fixed 1rem */
+  --gutter: clamp(1rem, 4vw, 3rem);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: 'Manrope', sans-serif;
+  /* Prevent stray horizontal scroll WITHOUT breaking position:sticky.
+     `overflow-x: hidden` would turn body into a scroll container and stop the
+     sticky header from sticking; `clip` prevents overflow without that side effect. */
+  overflow-x: clip;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(177, 23, 31, 0.17), transparent 35%),
+    radial-gradient(circle at 95% 100%, rgba(177, 23, 31, 0.13), transparent 28%),
+    var(--bg);
+  color: var(--text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+main,
+header,
+.site-footer,
+.copyright {
+  width: min(var(--container), 100%);
+  margin-inline: auto;
+}
+
+/* ---------- Header ---------- */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(13, 15, 18, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.top-bar {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.7rem;
+  padding: 0.7rem var(--gutter);
+  background: #0d0f12;
+  border-bottom: 1px solid var(--line);
+}
+
+.top-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted);
+  font-size: 0.86rem;
+  min-width: 0;
+}
+
+.top-item span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.top-item:hover,
+.social-links a:hover {
+  color: var(--text);
+}
+
+.social-links {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.social-links a {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid #2f353d;
+  display: grid;
+  place-items: center;
+  transition: border-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.main-nav-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding: 0.9rem var(--gutter);
+}
+
+.logo {
+  display: grid;
+  gap: 0.15rem;
+  line-height: 1.05;
+}
+
+.logo-mark {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(1.5rem, 6vw, 2.1rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.logo-tagline {
+  font-size: clamp(0.66rem, 2.4vw, 0.78rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  text-transform: none;
+}
+
+.main-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.main-nav a {
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--muted);
+  white-space: nowrap;
+  transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
+}
+
+.main-nav a.active,
+.main-nav a:hover {
+  border-color: #4d1f22;
+  background: rgba(177, 23, 31, 0.16);
+  color: var(--text);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 0 0 20px 20px;
+  margin: 0 var(--gutter);
+  padding: clamp(2rem, 6vw, 4rem) clamp(1.2rem, 4vw, 3rem);
+  display: grid;
+  gap: clamp(1.2rem, 3vw, 2rem);
+}
+
+.hero-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(115deg, rgba(10, 11, 13, 0.92) 24%, rgba(10, 11, 13, 0.6) 70%),
+    url('./assets/drilling1.webp') center/cover;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(0deg, rgba(11, 13, 16, 0.2), rgba(11, 13, 16, 0.2)),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.03),
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px,
+      transparent 68px
+    );
+}
+
+.hero-content {
+  display: grid;
+  gap: 1rem;
+  align-content: center;
+}
+
+.hero-badge {
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  padding: 0.38rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  font-size: clamp(0.68rem, 2.4vw, 0.78rem);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-size: clamp(1.9rem, 7vw, 3.8rem);
+  line-height: 1.06;
+}
+
+.hero p {
+  color: #dde2e7;
+  max-width: 60ch;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  cursor: pointer;
+  border-radius: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.85rem 1.1rem;
+  font-size: 0.78rem;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.07);
+}
+
+.btn-primary {
+  background: linear-gradient(120deg, var(--accent), var(--accent-strong));
+  color: white;
+}
+
+.btn-outline {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: white;
+}
+
+.btn-link {
+  color: var(--text);
+  border: 1px solid #2e353d;
+  width: fit-content;
+}
+
+/* ---------- Estimate form ---------- */
+.estimate-card {
+  background: linear-gradient(140deg, rgba(18, 20, 24, 0.95), rgba(24, 27, 33, 0.92));
+  border: 1px solid #3a3f48;
+  border-radius: var(--radius);
+  padding: clamp(1rem, 3vw, 1.5rem);
+  display: grid;
+  gap: 0.8rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.estimate-card p {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.estimate-form {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.estimate-form label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.field-optional {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.estimate-form input,
+.estimate-form select,
+.estimate-form textarea {
+  width: 100%;
+  border: 1px solid #353b44;
+  background: #101317;
+  color: white;
+  border-radius: 10px;
+  padding: 0.7rem;
+  font: inherit;
+}
+
+.estimate-form input:focus,
+.estimate-form select:focus,
+.estimate-form textarea:focus {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 1px;
+}
+
+.estimate-form textarea {
+  resize: vertical;
+}
+
+/* Honeypot — visually and programmatically hidden, but present in the DOM for bots */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.form-success {
+  color: #9ef0b3;
+  border: 1px solid rgba(158, 240, 179, 0.25);
+  border-radius: 10px;
+  background: rgba(71, 157, 96, 0.12);
+  padding: 0.6rem;
+  font-size: 0.82rem;
+}
+
+.form-error {
+  margin-top: 0.6rem;
+  color: #f0a3a3;
+  border: 1px solid rgba(240, 158, 158, 0.25);
+  border-radius: 10px;
+  background: rgba(157, 71, 71, 0.12);
+  padding: 0.6rem;
+  font-size: 0.82rem;
+}
+
+/* ---------- Trust grid ---------- */
+.trust-grid {
+  display: grid;
+  gap: 0.7rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding: 1.2rem var(--gutter);
+}
+
+.trust-grid article {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.01);
+  padding: 0.8rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* ---------- Sections ---------- */
+.section-wrap {
+  padding: clamp(2.5rem, 6vw, 4rem) var(--gutter);
+  display: grid;
+  gap: 1.5rem;
+}
+
+.section-heading {
+  display: grid;
+  gap: 0.8rem;
+  max-width: 68ch;
+}
+
+.section-heading h1,
+.section-heading h2 {
+  font-size: clamp(1.7rem, 5vw, 2.8rem);
+  line-height: 1.1;
+}
+
+.section-heading p {
+  color: var(--muted);
+}
+
+.eyebrow {
+  width: fit-content;
+  color: #ffd5d8;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-left: 4px solid var(--accent);
+  padding-left: 0.7rem;
+}
+
+/* ---------- Cards ---------- */
+.card-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+.service-card,
+.project-card,
+.contact-card,
+.faq-list details {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: linear-gradient(160deg, rgba(27, 30, 36, 0.75), rgba(20, 23, 27, 0.85));
+}
+
+.service-card,
+.project-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card img,
+.project-card img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.service-card > div,
+.project-content {
+  padding: 1rem;
+  display: grid;
+  gap: 0.7rem;
+  align-content: start;
+  flex: 1;
+}
+
+.service-card p,
+.project-content p {
+  color: var(--muted);
+}
+
+.project-content ul,
+.detail-meta,
+.contact-card ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.35rem;
+  color: #d9e0e7;
+}
+
+.projects-grid {
+  grid-template-columns: 1fr;
+}
+
+/* ---------- Why us ---------- */
+.why-grid {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.why-grid article {
+  border: 1px solid #323840;
+  border-radius: 12px;
+  padding: 0.9rem;
+  display: grid;
+  gap: 0.3rem;
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.why-grid span {
+  color: #f08f95;
+  font-weight: 900;
+}
+
+/* ---------- Contact ---------- */
+.contact-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.contact-card {
+  padding: clamp(1rem, 3vw, 1.5rem);
+  display: grid;
+  gap: 0.9rem;
+}
+
+.map-wrap {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  min-height: 320px;
+}
+
+.map-wrap iframe {
+  width: 100%;
+  min-height: 320px;
+  border: 0;
+}
+
+/* ---------- FAQ ---------- */
+.faq-list {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.faq-list details {
+  padding: 1rem;
+}
+
+.faq-list summary {
+  cursor: pointer;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.faq-list p {
+  margin-top: 0.7rem;
+  color: var(--muted);
+}
+
+/* ---------- Detail pages ---------- */
+.detail-page {
+  max-width: 900px;
+}
+
+.detail-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  margin-top: 3rem;
+  border-top: 1px solid var(--line);
+  padding: 2rem var(--gutter);
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+.site-footer h4 {
+  font-size: 1.6rem;
+  letter-spacing: 0.12em;
+}
+
+.site-footer p,
+.site-footer a {
+  color: var(--muted);
+}
+
+.site-footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.site-footer a:hover {
+  color: var(--text);
+}
+
+.footer-social {
+  margin-top: 0.7rem;
+}
+
+.copyright {
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  text-align: center;
+  padding: 1rem var(--gutter);
+  font-size: 0.82rem;
+}
+
+.page-top {
+  padding-top: 2rem;
+}
+
+/* ---------- Floating WhatsApp button ---------- */
+.whatsapp-fab {
+  position: fixed;
+  right: clamp(1rem, 4vw, 2rem);
+  bottom: clamp(1rem, 4vw, 2rem);
+  z-index: 60;
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
+  color: white;
+  background: #25d366;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.whatsapp-fab:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Small phones: stack CTAs full width ---------- */
+@media (max-width: 539px) {
+  .hero-actions .btn {
+    width: 100%;
+  }
+}
+
+/* ---------- Large phones / small tablets ---------- */
+@media (min-width: 540px) {
+  .card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .trust-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ---------- Tablets ---------- */
+@media (min-width: 768px) {
+  .top-bar {
+    grid-template-columns: 1.4fr 1fr 1.2fr auto;
+    align-items: center;
+  }
+
+  .main-nav-wrap {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .why-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contact-grid {
+    grid-template-columns: 0.9fr 1.1fr;
+    align-items: start;
+  }
+
+  .site-footer {
+    grid-template-columns: 1.3fr 1fr 1fr 1fr;
+  }
+}
+
+/* ---------- Desktops ---------- */
+@media (min-width: 1024px) {
+  .hero {
+    grid-template-columns: 1.25fr 0.9fr;
+    align-items: center;
+    min-height: 80vh;
+  }
+
+  .hero .estimate-card {
+    align-self: center;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ---------- Compact mobile header (mobile only, desktop untouched) ---------- */
+/* 767.98px instead of 768px so it never overlaps the min-width:768px desktop rules */
+@media (max-width: 767.98px) {
+  /* On phones the header scrolls away with the page (not pinned).
+     Scroll back to the top to see it again. Desktop stays sticky. */
+  header {
+    position: static;
+  }
+
+  /* Hide the top info bar entirely — contact info is available in the footer/contact page */
+  .top-bar {
+    display: none;
+  }
+
+  /* Slimmer navbar */
+  .main-nav-wrap {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .logo-mark {
+    font-size: 1.2rem;
+  }
+
+  .logo-tagline {
+    font-size: 0.65rem;
+  }
+
+  .main-nav {
+    gap: 0.3rem;
+  }
+
+  .main-nav a {
+    padding: 0.35rem 0.6rem;
+    font-size: 12px;
+  }
+}
